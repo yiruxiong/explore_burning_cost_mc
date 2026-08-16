@@ -22,7 +22,8 @@ This mirrors a real UK pricing team's A/B testing and causal inference workflow.
 """
 
 import sys
-sys.path.insert(0, "/home/runner/work/explore_burning_cost_mc/explore_burning_cost_mc")
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import numpy as np
 import pandas as pd

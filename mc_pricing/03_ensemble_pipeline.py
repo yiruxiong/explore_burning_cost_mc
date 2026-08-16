@@ -17,7 +17,8 @@ around the ensemble so InsuranceConformalPredictor can call .predict().
 """
 
 import sys
-sys.path.insert(0, "/home/runner/work/explore_burning_cost_mc/explore_burning_cost_mc")
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import numpy as np
 import pandas as pd
@@ -89,10 +90,9 @@ class EnsemblePurePremium(BaseEstimator, RegressorMixin):
 
 def prepare_data() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     df = generate_full_portfolio()
+    region_raw = df["region"].copy()
     df = pd.get_dummies(df, columns=["region"], drop_first=True, dtype=float)
-    # Restore region string column for EBM
-    df_raw = generate_full_portfolio()
-    df["region"] = df_raw["region"].values
+    df["region"] = region_raw.values
 
     train = df[df["calendar_year"] == 2021].copy()
     cal   = df[df["calendar_year"] == 2022].copy()
