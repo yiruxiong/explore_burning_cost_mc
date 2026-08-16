@@ -151,7 +151,7 @@ def create_model_card() -> MRMModelCard:
         ),
         not_intended_for=["Commercial fleet", "Track-day / competition use"],
         target_variable="claim_frequency × average_severity (pure premium £)",
-        distribution_family="Poisson × Gamma with Sarmanov copula correction",
+        distribution_family="other",
         rating_factors=["rider_age", "ncd_years", "engine_cc", "vehicle_age", "region"],
         training_data_period=("2021-01-01", "2022-12-31"),
         development_date="2024-01-01",
@@ -185,7 +185,7 @@ def create_model_card() -> MRMModelCard:
         last_monitoring_run="",
         last_validation_run="",
         last_validation_run_id="",
-        overall_rag="amber",
+        overall_rag="AMBER",
         created_at="2024-01-01",
         updated_at="2024-01-01",
     )
